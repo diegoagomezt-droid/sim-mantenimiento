@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "equipo_id": 1,
+        "personal_id": 1,
+        "descripcion": "Cambio de aceite y filtros preventivo",
+        "estado": "Completada",
+        "horas_trabajo": 4,
+        "fecha": "2026-04-15"
+    },
+    {
+        "id": 2,
+        "equipo_id": 3,
+        "personal_id": 2,
+        "descripcion": "Revisión de termografía en bornes",
+        "estado": "Abierta",
+        "horas_trabajo": 0,
+        "fecha": "2026-04-28"
+    }
+]

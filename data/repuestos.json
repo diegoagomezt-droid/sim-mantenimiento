@@ -1,0 +1,7 @@
+[
+    {"id": 1, "nombre": "Rodamiento SKF 6205", "stock": 50, "unidad": "Unidades"},
+    {"id": 2, "nombre": "Aceite Sintético 15W40", "stock": 12, "unidad": "Galones"},
+    {"id": 3, "nombre": "Filtro de Aire Industrial", "stock": 8, "unidad": "Unidades"},
+    {"id": 4, "nombre": "Válvula de Seguridad 1/2", "stock": 4, "unidad": "Unidades"},
+    {"id": 5, "nombre": "Kit de Empaquetadura NBR", "stock": 15, "unidad": "Sets"}
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "tag": "COMP-01",
+        "nombre": "Compresor de Tornillo Atlas Copco"
+    },
+    {
+        "id": 2,
+        "tag": "BOM-05",
+        "nombre": "Bomba Centrifuga de Agua Potable"
+    },
+    {
+        "id": 3,
+        "tag": "TRNS-02",
+        "nombre": "Transformador de Potencia 500kVA"
+    },
+    {
+        "id": 4,
+        "tag": "MONT-01",
+        "nombre": "Montacargas El\u00e9ctrico Toyota"
+    },
+    {
+        "id": 5,
+        "tag": "CAL-03",
+        "nombre": "Caldera Industrial de Vapor"
+    },
+    {
+        "id": 6,
+        "tag": "MAQ-LAV-01",
+        "nombre": "Hidrolavadora "
+    }
+]

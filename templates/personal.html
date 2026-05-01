@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Gestión de Personal Técnico</h2>
+<form method="POST" style="margin-bottom: 20px;">
+    <input type="text" name="nombre" placeholder="Nombre completo" required>
+    <input type="text" name="especialidad" placeholder="Especialidad (Mecánico, etc)" required>
+    <button type="submit">Agregar Técnico</button>
+</form>
+<table>
+    <tr><th>ID</th><th>Nombre</th><th>Especialidad</th></tr>
+    {% for p in personal %}
+    <tr><td>{{ p.id }}</td><td>{{ p.nombre }}</td><td>{{ p.especialidad }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

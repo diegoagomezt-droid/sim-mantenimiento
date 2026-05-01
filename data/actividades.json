@@ -1,0 +1,5 @@
+[
+    {"id": 1, "ot_id": 1, "descripcion": "Drenaje de aceite usado", "fecha": "2026-04-15"},
+    {"id": 2, "ot_id": 1, "descripcion": "Instalación de filtro nuevo", "fecha": "2026-04-15"},
+    {"id": 3, "ot_id": 2, "descripcion": "Apertura de tablero principal", "fecha": "2026-04-28"}
+]

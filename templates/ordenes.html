@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Gestión de Órdenes de Trabajo</h2>
+<form method="POST">
+    <select name="equipo_id" required>
+        {% for e in equipos %}<option value="{{e.id}}">{{e.tag}}</option>{% endfor %}
+    </select>
+    <input type="text" name="descripcion" placeholder="Falla detectada" required>
+    <button type="submit">Abrir OT</button>
+</form>
+
+<table>
+    <tr>
+        <th>ID</th><th>Equipo</th><th>Descripción</th><th>Estado</th><th>Acción</th>
+    </tr>
+    {% for o in ots %}
+    <tr>
+        <td>{{ o.id }}</td>
+        <td>{{ o.tag_equipo }}</td>
+        <td>{{ o.descripcion }}</td>
+        <td>{{ o.estado }}</td>
+        <td><a href="/orden/{{o.id}}">Ver Seguimiento</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

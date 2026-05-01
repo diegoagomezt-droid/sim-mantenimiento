@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIM BETA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+    <strong>SIM v1.0</strong> | 
+    <a href="/">Dashboard</a> | 
+    <a href="/equipos">Equipos</a> | 
+    <a href="/ordenes">Órdenes (OT)</a> |
+    <a href="/personal">Personal</a> |
+    <a href="/repuestos">Repuestos</a>
+</nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

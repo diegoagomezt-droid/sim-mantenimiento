@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Gestión de Equipos (Activos)</h2>
+
+<div style="background: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ccc;">
+    <h4>Registrar Nuevo Equipo</h4>
+    <form method="POST">
+        <input type="text" name="tag" placeholder="Tag (Ej: COMP-01)" required style="padding: 8px;">
+        <input type="text" name="nombre" placeholder="Nombre del Equipo" required style="padding: 8px;">
+        <button type="submit" style="padding: 8px 15px; background: #2c3e50; color: white; border: none; cursor: pointer;">
+            Guardar Equipo
+        </button>
+    </form>
+</div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tag</th>
+        <th>Nombre</th>
+    </tr>
+    {% for e in equipos %}
+    <tr>
+        <td>{{ e.id }}</td>
+        <td>{{ e.tag }}</td>
+        <td>{{ e.nombre }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p><a href="/">⬅ Volver al Dashboard</a></p>
+{% endblock %}

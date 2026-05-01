@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+<div style="max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 10px; shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <h2>📄 Seguimiento Detallado - OT #{{ ot.id }}</h2>
+    <hr>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+        <div>
+            <h4>🛠️ Información del Activo</h4>
+            <p><strong>Equipo:</strong> {{ equipo.nombre }} ({{ equipo.tag }})</p>
+            <p><strong>Estado OT:</strong> <span class="badge">{{ ot.estado }}</span></p>
+        </div>
+        <div style="text-align: right;">
+            <h4>👤 Responsable Técnico</h4>
+            <p><strong>Nombre:</strong> {{ tecnico.nombre }}</p>
+            <p><strong>Especialidad:</strong> {{ tecnico.especialidad }}</p>
+        </div>
+    </div>
+
+    <div style="background: #f9f9f9; padding: 15px; border-left: 5px solid #2c3e50; margin-bottom: 20px;">
+        <h4>⏱️ Tiempo y Ejecución</h4>
+        <p><strong>Fecha de reporte:</strong> {{ ot.fecha }}</p>
+        <p><strong>Tiempo invertido:</strong> {{ ot.horas_trabajo }} horas</p>
+        <p><strong>Descripción de falla:</strong> {{ ot.descripcion }}</p>
+    </div>
+
+    <h4>📦 Repuestos Utilizados</h4>
+    <table style="width: 100%; margin-bottom: 20px;">
+        <tr style="background: #eee;">
+            <th>Repuesto</th><th>Unidad</th>
+        </tr>
+        {% for r in repuestos %}
+        <tr><td>{{ r.nombre }}</td><td>{{ r.unidad }}</td></tr>
+        {% else %}
+        <tr><td colspan="2">No se registraron repuestos para esta orden.</td></tr>
+        {% endfor %}
+    </table>
+
+    <h4>📝 Bitácora de Actividades</h4>
+    <ul>
+        {% for a in actividades %}
+        <li><strong>{{ a.fecha }}:</strong> {{ a.descripcion }}</li>
+        {% else %}
+        <li>No hay actividades registradas aún.</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+    <a href="/ordenes" style="text-decoration: none; color: #2980b9;">⬅ Volver al listado de órdenes</a>
+</div>
+
+<style>
+    .badge { background: #2ecc71; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.9em; }
+</style>
+{% endblock %}

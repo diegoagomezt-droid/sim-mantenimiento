@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Dashboard de Mantenimiento</h2>
+<div class="kpi-container">
+    <div class="kpi">
+        <h3>Cumplimiento</h3>
+        <p>{{ cumplimiento }}%</p>
+    </div>
+    <div class="kpi">
+        <h3>MTTR (Horas)</h3>
+        <p>{{ mttr }} h</p>
+    </div>
+    <div class="kpi">
+        <h3>Disponibilidad</h3>
+        <p>{{ disp }}%</p>
+    </div>
+</div>
+{% endblock %}

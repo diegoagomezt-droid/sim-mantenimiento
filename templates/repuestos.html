@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Inventario de Repuestos</h2>
+<form method="POST" style="margin-bottom: 20px;">
+    <input type="text" name="nombre" placeholder="Nombre del repuesto" required>
+    <input type="number" name="stock" placeholder="Cantidad inicial" required>
+    <input type="text" name="unidad" placeholder="Unidad (Unid, Gal, etc)" required>
+    <button type="submit">Agregar Repuesto</button>
+</form>
+<table>
+    <tr><th>ID</th><th>Repuesto</th><th>Stock</th><th>Unidad</th></tr>
+    {% for r in repuestos %}
+    <tr><td>{{ r.id }}</td><td>{{ r.nombre }}</td><td>{{ r.stock }}</td><td>{{ r.unidad }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}
