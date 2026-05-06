@@ -1,7 +1,40 @@
 [
-    {"id": 1, "nombre": "Rodamiento SKF 6205", "stock": 50, "unidad": "Unidades"},
-    {"id": 2, "nombre": "Aceite Sintético 15W40", "stock": 12, "unidad": "Galones"},
-    {"id": 3, "nombre": "Filtro de Aire Industrial", "stock": 8, "unidad": "Unidades"},
-    {"id": 4, "nombre": "Válvula de Seguridad 1/2", "stock": 4, "unidad": "Unidades"},
-    {"id": 5, "nombre": "Kit de Empaquetadura NBR", "stock": 15, "unidad": "Sets"}
+    {
+        "id": 1,
+        "nombre": "Rodamiento SKF 6205",
+        "stock": 41,
+        "unidad": "Unidades",
+        "ot_id": 1,
+        "cantidad_en_ot": 8
+    },
+    {
+        "id": 2,
+        "nombre": "Aceite Sint\u00e9tico 15W40",
+        "stock": 8,
+        "unidad": "Galones",
+        "ot_id": 2,
+        "cantidad_en_ot": 4
+    },
+    {
+        "id": 3,
+        "nombre": "Filtro de Aire Industrial",
+        "stock": 8,
+        "unidad": "Unidades"
+    },
+    {
+        "id": 4,
+        "nombre": "V\u00e1lvula de Seguridad 1/2",
+        "stock": -1,
+        "unidad": "Unidades",
+        "ot_id": 1,
+        "cantidad_en_ot": 5
+    },
+    {
+        "id": 5,
+        "nombre": "Kit de Empaquetadura NBR",
+        "stock": 14,
+        "unidad": "Sets",
+        "ot_id": 4,
+        "cantidad_en_ot": 1
+    }
 ]

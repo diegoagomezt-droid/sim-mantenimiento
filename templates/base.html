@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SIM - Sistema de Mantenimiento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav style="background: #2c3e50; padding: 15px; color: white;">
+        <a href="/" style="color: white; margin-right: 20px; text-decoration: none;">Dashboard</a>
+        <a href="/ordenes" style="color: white; text-decoration: none;">Órdenes (OT)</a>
+    </nav>
+
+    <div class="container" style="padding: 20px;">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
