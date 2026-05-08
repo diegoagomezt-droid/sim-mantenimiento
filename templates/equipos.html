@@ -1,32 +1,36 @@
 {% extends "layout.html" %}
 {% block content %}
-<h2>Gestión de Equipos (Activos)</h2>
+<h2 style="color: #2c3e50;">🚜 Gestión de Activos (Equipos)</h2>
 
-<div style="background: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ccc;">
+<div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ddd;">
     <h4>Registrar Nuevo Equipo</h4>
-    <form method="POST">
-        <input type="text" name="tag" placeholder="Tag (Ej: COMP-01)" required style="padding: 8px;">
-        <input type="text" name="nombre" placeholder="Nombre del Equipo" required style="padding: 8px;">
-        <button type="submit" style="padding: 8px 15px; background: #2c3e50; color: white; border: none; cursor: pointer;">
-            Guardar Equipo
-        </button>
+    <form method="POST" style="display: flex; gap: 10px;">
+        <input type="text" name="tag" placeholder="TAG (Ej: MONT-01)" required style="padding: 8px; flex: 1;">
+        <input type="text" name="nombre" placeholder="Nombre/Modelo" required style="padding: 8px; flex: 2;">
+        <button type="submit" style="background: #2c3e50; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">Registrar</button>
     </form>
 </div>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Tag</th>
-        <th>Nombre</th>
-    </tr>
-    {% for e in equipos %}
-    <tr>
-        <td>{{ e.id }}</td>
-        <td>{{ e.tag }}</td>
-        <td>{{ e.nombre }}</td>
-    </tr>
-    {% endfor %}
+<table style="width: 100%; border-collapse: collapse; background: white;">
+    <thead>
+        <tr style="background: #2c3e50; color: white;">
+            <th style="padding: 10px; text-align: left;">Tag</th>
+            <th style="padding: 10px; text-align: left;">Equipo</th>
+            <th style="padding: 10px; text-align: center;">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in equipos %}
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 10px;"><strong>{{ e.tag }}</strong></td>
+            <td style="padding: 10px;">{{ e.nombre }}</td>
+            <td style="padding: 10px; text-align: center;">
+                <form action="/equipos/eliminar/{{ e.id }}" method="POST" onsubmit="return confirm('¿Eliminar equipo {{ e.tag }}?');">
+                    <button type="submit" style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">🗑️ Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
-
-<p><a href="/">⬅ Volver al Dashboard</a></p>
 {% endblock %}

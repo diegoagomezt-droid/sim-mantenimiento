@@ -1,15 +1,56 @@
 {% extends "layout.html" %}
 {% block content %}
-<h2>Gestión de Personal Técnico</h2>
-<form method="POST" style="margin-bottom: 20px;">
-    <input type="text" name="nombre" placeholder="Nombre completo" required>
-    <input type="text" name="especialidad" placeholder="Especialidad (Mecánico, etc)" required>
-    <button type="submit">Agregar Técnico</button>
-</form>
-<table>
-    <tr><th>ID</th><th>Nombre</th><th>Especialidad</th></tr>
-    {% for p in personal %}
-    <tr><td>{{ p.id }}</td><td>{{ p.nombre }}</td><td>{{ p.especialidad }}</td></tr>
-    {% endfor %}
+
+<h2 style="color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+    👥 Gestión de Personal Técnico
+</h2>
+
+<div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #ddd;">
+    <h4 style="margin-top: 0;">➕ Agregar Nuevo Técnico</h4>
+    <form method="POST" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <input type="text" name="nombre" placeholder="Nombre completo" required 
+               style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; flex: 1; min-width: 200px;">
+        
+        <input type="text" name="especialidad" placeholder="Especialidad (Mecánico, etc)" required 
+               style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; flex: 1; min-width: 200px;">
+        
+        <button type="submit" style="background: #2c3e50; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+            Agregar Técnico
+        </button>
+    </form>
+</div>
+
+<table style="width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <thead>
+        <tr style="background: #2c3e50; color: white;">
+            <th style="padding: 12px; text-align: left;">ID</th>
+            <th style="padding: 12px; text-align: left;">Nombre</th>
+            <th style="padding: 12px; text-align: left;">Especialidad</th>
+            <th style="padding: 12px; text-align: center;">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in personal %}
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 12px;">{{ p.id }}</td>
+            <td style="padding: 12px;"><strong>{{ p.nombre }}</strong></td>
+            <td style="padding: 12px;">{{ p.especialidad }}</td>
+            <td style="padding: 12px; text-align: center;">
+                <form action="/personal/eliminar/{{ p.id }}" method="POST" 
+                      onsubmit="return confirm('¿Está seguro de eliminar a {{ p.nombre }}?');" 
+                      style="display: inline;">
+                    <button type="submit" style="background: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9em;">
+                        🗑️ Eliminar
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
+
+<div style="margin-top: 20px;">
+    <a href="/" style="text-decoration: none; color: #2980b9;">← Volver al Dashboard</a>
+</div>
+
 {% endblock %}

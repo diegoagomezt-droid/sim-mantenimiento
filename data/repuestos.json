@@ -2,39 +2,41 @@
     {
         "id": 1,
         "nombre": "Rodamiento SKF 6205",
-        "stock": 41,
+        "stock": 50,
         "unidad": "Unidades",
-        "ot_id": 1,
-        "cantidad_en_ot": 8
+        "ot_id": null,
+        "cantidad_en_ot": 0
     },
     {
         "id": 2,
         "nombre": "Aceite Sint\u00e9tico 15W40",
-        "stock": 8,
+        "stock": 20,
         "unidad": "Galones",
-        "ot_id": 2,
-        "cantidad_en_ot": 4
+        "ot_id": null,
+        "cantidad_en_ot": 0
     },
     {
         "id": 3,
         "nombre": "Filtro de Aire Industrial",
-        "stock": 8,
-        "unidad": "Unidades"
-    },
-    {
-        "id": 4,
-        "nombre": "V\u00e1lvula de Seguridad 1/2",
-        "stock": -1,
+        "stock": 20,
         "unidad": "Unidades",
-        "ot_id": 1,
-        "cantidad_en_ot": 5
+        "ot_id": null,
+        "cantidad_en_ot": 0
     },
     {
         "id": 5,
         "nombre": "Kit de Empaquetadura NBR",
-        "stock": 14,
+        "stock": 20,
         "unidad": "Sets",
-        "ot_id": 4,
-        "cantidad_en_ot": 1
+        "ot_id": null,
+        "cantidad_en_ot": 0
+    },
+    {
+        "id": 6,
+        "nombre": "Aceite Sint\u00e9tico 15W40 ",
+        "stock": 80,
+        "unidad": "Litro",
+        "ot_id": null,
+        "cantidad_en_ot": 0
     }
 ]

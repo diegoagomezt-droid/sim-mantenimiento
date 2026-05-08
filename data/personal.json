@@ -1,7 +1,22 @@
 [
-    {"id": 1, "nombre": "Carlos Mendoza", "especialidad": "Mecánico Industrial"},
-    {"id": 2, "nombre": "Laura Torres", "especialidad": "Electricista de Potencia"},
-    {"id": 3, "nombre": "Jorge Rivas", "especialidad": "Instrumentista"},
-    {"id": 4, "nombre": "Andrés Felipe", "especialidad": "Técnico Hidráulico"},
-    {"id": 5, "nombre": "Elena Ruiz", "especialidad": "Especialista en Refrigeración"}
+    {
+        "id": 1,
+        "nombre": "Carlos Mendoza",
+        "especialidad": "Mec\u00e1nico Industrial"
+    },
+    {
+        "id": 2,
+        "nombre": "Laura Torres",
+        "especialidad": "Electricista de Potencia"
+    },
+    {
+        "id": 3,
+        "nombre": "Jorge Rivas",
+        "especialidad": "Instrumentista"
+    },
+    {
+        "id": 4,
+        "nombre": "Andr\u00e9s Felipe",
+        "especialidad": "T\u00e9cnico Hidr\u00e1ulico"
+    }
 ]

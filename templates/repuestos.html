@@ -1,16 +1,52 @@
 {% extends "layout.html" %}
 {% block content %}
-<h2>Inventario de Repuestos</h2>
-<form method="POST" style="margin-bottom: 20px;">
-    <input type="text" name="nombre" placeholder="Nombre del repuesto" required>
-    <input type="number" name="stock" placeholder="Cantidad inicial" required>
-    <input type="text" name="unidad" placeholder="Unidad (Unid, Gal, etc)" required>
-    <button type="submit">Agregar Repuesto</button>
-</form>
-<table>
-    <tr><th>ID</th><th>Repuesto</th><th>Stock</th><th>Unidad</th></tr>
+<h2 style="color: #2c3e50;">📦 Inventario de Repuestos</h2>
+
+<div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ddd;">
+    <h4>Añadir Nuevo Repuesto</h4>
+    <form method="POST" style="display: flex; gap: 10px;">
+        <input type="text" name="nombre" placeholder="Nombre del repuesto" required style="padding: 8px; flex: 2;">
+        <input type="number" name="stock" placeholder="Cant." required style="padding: 8px; flex: 0.5;">
+        <input type="text" name="unidad" placeholder="Unidad (Un, Lts)" required style="padding: 8px; flex: 1;">
+        <button type="submit" style="background: #2c3e50; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">Guardar</button>
+    </form>
+</div>
+
+<table style="width: 100%; border-collapse: collapse; background: white;">
+    <thead>
+        <tr style="background: #2c3e50; color: white;">
+            <th style="padding: 10px; text-align: left;">ID</th>
+            <th style="padding: 10px; text-align: left;">Repuesto</th>
+            <th style="padding: 10px; text-align: left;">Stock</th>
+            <th style="padding: 10px; text-align: center;">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
     {% for r in repuestos %}
-    <tr><td>{{ r.id }}</td><td>{{ r.nombre }}</td><td>{{ r.stock }}</td><td>{{ r.unidad }}</td></tr>
+    <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 10px;">{{ r.id }}</td>
+        <td style="padding: 10px;"><strong>{{ r.nombre }}</strong></td>
+        <td style="padding: 10px;">
+            <span style="font-size: 1.1em; font-weight: bold;">{{ r.stock }}</span> {{ r.unidad }}
+        </td>
+        <td style="padding: 10px;">
+            <form action="/repuestos/sumar/{{ r.id }}" method="POST" style="display: flex; gap: 5px; align-items: center;">
+                <input type="number" name="cantidad_nueva" value="1" min="1" 
+                       style="width: 60px; padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                <button type="submit" style="background: #27ae60; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                    ➕ Sumar
+                </button>
+            </form>
+        </td>
+        <td style="padding: 10px; text-align: center;">
+            <form action="/repuestos/eliminar/{{ r.id }}" method="POST" onsubmit="return confirm('¿Eliminar {{ r.nombre }}?');">
+                <button type="submit" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 0.9em;">
+                    🗑️ Borrar
+                </button>
+            </form>
+        </td>
+    </tr>
     {% endfor %}
+</tbody>
 </table>
 {% endblock %}

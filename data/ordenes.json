@@ -1,11 +1,10 @@
 [
     {
         "id": 1,
-        "equipo_id": 1,
-        "personal_id": 1,
-        "descripcion": "Cambio de aceite y filtros preventivo",
-        "estado": "Completada",
-        "horas_trabajo": 4,
-        "fecha": "2026-04-15"
+        "equipo_id": 4,
+        "descripcion": "REVISION GENERAL 10000 HORAS \r\nINCLUYE CAMBIO DE ACEITE Y REVISION SISTEMA HIDRAULICO COMPLETO ",
+        "estado": "Abierta",
+        "horas_trabajo": 0,
+        "fecha": "2026-05-07"
     }
 ]
