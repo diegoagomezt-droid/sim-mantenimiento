@@ -10,26 +10,26 @@
     {
         "id": 2,
         "nombre": "Aceite Sint\u00e9tico 15W40",
-        "stock": 20,
+        "stock": 19,
         "unidad": "Galones",
-        "ot_id": null,
-        "cantidad_en_ot": 0
+        "ot_id": 1,
+        "cantidad_en_ot": 1
     },
     {
         "id": 3,
         "nombre": "Filtro de Aire Industrial",
-        "stock": 20,
+        "stock": 19,
         "unidad": "Unidades",
-        "ot_id": null,
-        "cantidad_en_ot": 0
+        "ot_id": 1,
+        "cantidad_en_ot": 1
     },
     {
         "id": 5,
         "nombre": "Kit de Empaquetadura NBR",
-        "stock": 20,
+        "stock": 19,
         "unidad": "Sets",
-        "ot_id": null,
-        "cantidad_en_ot": 0
+        "ot_id": 1,
+        "cantidad_en_ot": 1
     },
     {
         "id": 6,
@@ -38,5 +38,41 @@
         "unidad": "Litro",
         "ot_id": null,
         "cantidad_en_ot": 0
+    },
+    {
+        "id": 7,
+        "nombre": "Filtro Hidraulico de Retorno (Donaldson) ",
+        "stock": 19,
+        "unidad": "Unidades",
+        "ot_id": 1,
+        "cantidad_en_ot": 1
+    },
+    {
+        "id": 8,
+        "nombre": "Grasa Roja de Litio-EP2 ",
+        "stock": 30,
+        "unidad": "Libras"
+    },
+    {
+        "id": 9,
+        "nombre": "L\u00edquido de Frenos DOT 4",
+        "stock": 39,
+        "unidad": "Litro ",
+        "ot_id": 1,
+        "cantidad_en_ot": 1
+    },
+    {
+        "id": 10,
+        "nombre": "Spray Limpiador de Contactos 300Ml",
+        "stock": 43,
+        "unidad": "Unidades",
+        "ot_id": 3,
+        "cantidad_en_ot": 7
+    },
+    {
+        "id": 11,
+        "nombre": "Agua Desmineralizada (Baterias) ",
+        "stock": 20,
+        "unidad": "Litro"
     }
 ]

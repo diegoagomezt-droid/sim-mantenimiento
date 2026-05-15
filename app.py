@@ -7,19 +7,47 @@ init_db()
 
 @app.route('/')
 def index():
+    # Carga de datos
     ots = load_data('ordenes')
     equipos = load_data('equipos')
     
-    total = len(ots)
-    completadas = [o for o in ots if o.get('estado') == 'Completada']
+    # 1. Métricas de Volumen
+    total_ots = len(ots)
+    ots_abiertas = len([o for o in ots if o.get('estado') == 'Abierta'])
+    # Filtramos solo las órdenes completadas para las métricas de desempeño
+    ots_completadas_lista = [o for o in ots if o.get('estado') == 'Completada']
     
-    cumplimiento = (len(completadas) / total * 100) if total > 0 else 0
-    horas_total = sum([o.get('horas_trabajo', 0) for o in completadas])
-    mttr = horas_total / len(completadas) if completadas else 0
-    disponibilidad = 100 - ((horas_total / (len(equipos) * 720)) * 100) if equipos else 100
+    # 2. Cálculos de Tiempos (Estimado vs Real)
+    # Convertimos a float para asegurar cálculos matemáticos correctos
+    total_estimado = sum([float(o.get('horas_estimadas', 0)) for o in ots_completadas_lista])
+    total_real = sum([float(o.get('horas_trabajo', 0)) for o in ots_completadas_lista])
+    
+    # 3. KPI de Desviación (Eficiencia)
+    # Indica qué porcentaje del tiempo estimado se usó realmente
+    # Ejemplo: 100% es exacto, 120% es retraso, 80% es mayor rapidez
+    desviacion = (total_real / total_estimado * 100) if total_estimado > 0 else 0
+    
+    # 4. Otros KPIs de Gestión
+    # Cumplimiento: % de OTs cerradas frente al total
+    cumplimiento = (len(ots_completadas_lista) / total_ots * 100) if total_ots > 0 else 0
+    
+    # Disponibilidad: Cálculo estimado basado en 720 horas hombre/mes por equipo
+    disponibilidad = 100 - ((total_real / (len(equipos) * 720)) * 100) if equipos else 100
+    
+    # MTTR: Tiempo medio de reparación (opcional, lo mantenemos por si lo usas)
+    mttr = total_real / len(ots_completadas_lista) if ots_completadas_lista else 0
 
-    return render_template('index.html', cumplimiento=round(cumplimiento, 2), 
-                           mttr=round(mttr, 2), disp=round(disponibilidad, 2))
+    return render_template('index.html', 
+                           total_equipos=len(equipos),
+                           ots_abiertas=ots_abiertas,
+                           ots_completadas=len(ots_completadas_lista),
+                           cumplimiento=round(cumplimiento, 2), 
+                           mttr=round(mttr, 2), 
+                           disp=round(disponibilidad, 2),
+                           # Nuevas variables para el KPI de Eficiencia
+                           desviacion=round(desviacion, 1),
+                           total_estimado=round(total_estimado, 1),
+                           total_real=round(total_real, 1))
 
 @app.route('/equipos', methods=['GET', 'POST'])
 def equipos():
@@ -286,7 +314,23 @@ def gestionar_ordenes():
         data.append(nueva_ot)
         save_data('ordenes', data)
         return redirect('/ordenes')
-
+@app.route('/orden/<int:id_ot>/cerrar', methods=['POST'])
+def cerrar_orden(id_ot):
+    ordenes = load_data('ordenes')
+    # Capturamos los tiempos del formulario
+    horas_reales = float(request.form.get('horas_trabajo', 0))
+    horas_estimadas = float(request.form.get('horas_estimadas', 0)) 
+    
+    for o in ordenes:
+        if o['id'] == id_ot:
+            o['estado'] = 'Completada'
+            o['horas_trabajo'] = horas_reales
+            o['horas_estimadas'] = horas_estimadas # Guardamos el estimado para comparar luego
+            o['fecha_cierre'] = datetime.now().strftime("%Y-%m-%d %H:%M")
+            break
+            
+    save_data('ordenes', ordenes)
+    return redirect(url_for('detalle_ot', id_ot=id_ot))
 # ESTO SIEMPRE AL FINAL DEL ARCHIVO
 if __name__ == '__main__':
     app.run(debug=True)

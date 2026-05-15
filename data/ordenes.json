@@ -2,9 +2,21 @@
     {
         "id": 1,
         "equipo_id": 4,
-        "descripcion": "REVISION GENERAL 10000 HORAS \r\nINCLUYE CAMBIO DE ACEITE Y REVISION SISTEMA HIDRAULICO COMPLETO ",
-        "estado": "Abierta",
-        "horas_trabajo": 0,
-        "fecha": "2026-05-07"
+        "descripcion": "MANTENIMIENTO 2000HRS: \r\nServicio de Frenos: Limpieza, ajuste de zapatas y verificaci\u00f3n del l\u00edquido de frenos (si aplica).\r\nAjuste de Cadenas de Elevaci\u00f3n: Verificaci\u00f3n de la tensi\u00f3n igualada en ambas cadenas y lubricaci\u00f3n con spray de grafito o aceite penetrante.\r\nInspecci\u00f3n de Escobillas: Medici\u00f3n del desgaste de carbones en motores de tracci\u00f3n y elevaci\u00f3n.\r\nRevisi\u00f3n del Sistema Hidr\u00e1ulico: Cambio de filtros y limpieza del respiradero del tanque para evitar condensaci\u00f3n de agua.\r\nApriete de Torque: Revisi\u00f3n de pernos de llantas, m\u00e1stil y contrapeso.",
+        "estado": "Completada",
+        "horas_trabajo": 3.0,
+        "fecha": "2026-05-14",
+        "horas_estimadas": 4.0,
+        "fecha_cierre": "2026-05-14 23:32"
+    },
+    {
+        "id": 2,
+        "equipo_id": 3,
+        "descripcion": "Inspecci\u00f3n de Boquillas (Bushings): Limpieza profunda de las porcelanas para evitar \"flashover\" (arcos el\u00e9ctricos por contaminaci\u00f3n).\r\n\r\nAjuste de Conexiones: Reapriete de pernos en las terminales de alta y baja tensi\u00f3n (con torqu\u00edmetro)\r\n\r\nLimpieza de Radiadores: Eliminaci\u00f3n de polvo y suciedad de las aletas de enfriamiento\r\n\r\nRevisi\u00f3n del Tanque de Expansi\u00f3n y Empaques: Buscar fugas de aceite en las juntas de la tapa y v\u00e1lvulas.",
+        "estado": "Completada",
+        "horas_trabajo": 1.0,
+        "fecha": "2026-05-14",
+        "horas_estimadas": 1.0,
+        "fecha_cierre": "2026-05-14 23:37"
     }
 ]

@@ -2,8 +2,43 @@
     {
         "id": 1,
         "ot_id": 1,
+        "tecnico": "Andr\u00e9s Felipe",
+        "descripcion": "Cambio de filtros y limpieza del respiradero del tanque para evitar condensaci\u00f3n de agua.",
+        "fecha": "2026-05-14 21:11"
+    },
+    {
+        "id": 2,
+        "ot_id": 1,
         "tecnico": "Carlos Mendoza",
-        "descripcion": "wdasdasdsadsad",
-        "fecha": "2026-05-08 00:47"
+        "descripcion": "Limpieza, ajuste de zapatas y verificaci\u00f3n del l\u00edquido de frenos,Verificaci\u00f3n de la tensi\u00f3n igualada en ambas cadenas y lubricaci\u00f3n con spray de grafito o aceite penetrante.",
+        "fecha": "2026-05-14 21:13"
+    },
+    {
+        "id": 3,
+        "ot_id": 1,
+        "tecnico": "Laura Torres",
+        "descripcion": "Medici\u00f3n del desgaste de carbones en motores de tracci\u00f3n y elevaci\u00f3n.",
+        "fecha": "2026-05-14 21:13"
+    },
+    {
+        "id": 4,
+        "ot_id": 1,
+        "tecnico": "Jorge Rivas",
+        "descripcion": "Revisi\u00f3n de pernos de llantas, m\u00e1stil y contrapeso.",
+        "fecha": "2026-05-14 21:14"
+    },
+    {
+        "id": 5,
+        "ot_id": 2,
+        "tecnico": "Carlos Mendoza",
+        "descripcion": "Limpieza profunda de las porcelanas ",
+        "fecha": "2026-05-14 23:36"
+    },
+    {
+        "id": 6,
+        "ot_id": 2,
+        "tecnico": "Laura Torres",
+        "descripcion": "Reapriete de pernos en las terminales de alta y baja tensi\u00f3n,Eliminaci\u00f3n de polvo y suciedad de las aletas de enfriamiento, Buscar fugas de aceite en las juntas de la tapa y v\u00e1lvulas.",
+        "fecha": "2026-05-14 23:37"
     }
 ]

@@ -1,18 +1,156 @@
 {% extends "layout.html" %}
 {% block content %}
-<h2>Dashboard de Mantenimiento</h2>
-<div class="kpi-container">
-    <div class="kpi">
-        <h3>Cumplimiento</h3>
-        <p>{{ cumplimiento }}%</p>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div style="max-width: 1200px; margin: auto; padding: 20px; font-family: 'Inter', sans-serif;">
+    
+    <h2 style="color: #2c3e50; margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+        <i class="fas fa-chart-line"></i> Panel de Control de Mantenimiento
+    </h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        
+        <a href="/equipos" style="text-decoration: none; color: inherit; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 6px solid #3498db; height: 100%;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h4 style="margin: 0; color: #7f8c8d; font-size: 0.8em; text-transform: uppercase;">Activos</h4>
+                        <span style="font-size: 2.2em; font-weight: bold; color: #2c3e50;">{{ total_equipos }}</span>
+                        <p style="margin: 5px 0 0; font-size: 0.7em; color: #3498db; font-weight: 600;">Ver inventario →</p>
+                    </div>
+                    <i class="fas fa-industry" style="font-size: 2.5em; color: #3498db; opacity: 0.2;"></i>
+                </div>
+            </div>
+        </a>
+
+        <a href="/ordenes" style="text-decoration: none; color: inherit; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 6px solid #f1c40f; height: 100%;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h4 style="margin: 0; color: #7f8c8d; font-size: 0.8em; text-transform: uppercase;">OTs Abiertas</h4>
+                        <span style="font-size: 2.2em; font-weight: bold; color: #2c3e50;">{{ ots_abiertas }}</span>
+                        <p style="margin: 5px 0 0; font-size: 0.7em; color: #f1c40f; font-weight: 600;">Gestionar órdenes →</p>
+                    </div>
+                    <i class="fas fa-tools" style="font-size: 2.5em; color: #f1c40f; opacity: 0.2;"></i>
+                </div>
+            </div>
+        </a>
+
+        <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+                    border-left: 6px solid {% if desviacion <= 100 %}#2ecc71{% else %}#e74c3c{% endif %};">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h4 style="margin: 0; color: #7f8c8d; font-size: 0.8em; text-transform: uppercase;">Eficiencia de Tiempo</h4>
+                    <span style="font-size: 2.2em; font-weight: bold; color: #2c3e50;">{{ desviacion }}%</span>
+                    <p style="margin: 5px 0 0; font-size: 0.75em; color: #95a5a6;">
+                        <b>{{ total_real }}h</b> Reales / <b>{{ total_estimado }}h</b> Est.
+                    </p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-stopwatch" style="font-size: 2.5em; color: {% if desviacion <= 100 %}#2ecc71{% else %}#e74c3c{% endif %}; opacity: 0.2;"></i>
+                    <div style="font-size: 0.65em; font-weight: bold; margin-top: 5px; color: {% if desviacion <= 100 %}#2ecc71{% else %}#e74c3c{% endif %};">
+                        {% if desviacion <= 100 %}OPTIMO{% else %}DESFASADO{% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 6px solid #9b59b6;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h4 style="margin: 0; color: #7f8c8d; font-size: 0.8em; text-transform: uppercase;">Disponibilidad</h4>
+                    <span style="font-size: 2.2em; font-weight: bold; color: #2c3e50;">{{ disp }}%</span>
+                    <p style="margin: 5px 0 0; font-size: 0.75em; color: #95a5a6;">Uptime estimado</p>
+                </div>
+                <i class="fas fa-check-circle" style="font-size: 2.5em; color: #9b59b6; opacity: 0.2;"></i>
+            </div>
+        </div>
     </div>
-    <div class="kpi">
-        <h3>MTTR (Horas)</h3>
-        <p>{{ mttr }} h</p>
-    </div>
-    <div class="kpi">
-        <h3>Disponibilidad</h3>
-        <p>{{ disp }}%</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px;">
+        
+        <div style="background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h4 style="margin-top: 0; color: #34495e; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                <i class="fas fa-chart-pie"></i> Estado de Órdenes (OT)
+            </h4>
+            <div style="max-height: 300px; display: flex; justify-content: center;">
+                <canvas id="chartStatus"></canvas>
+            </div>
+        </div>
+
+        <div style="background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h4 style="margin-top: 0; color: #34495e; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                <i class="fas fa-chart-bar"></i> Tiempo Estimado vs Real (Horas Totales)
+            </h4>
+            <div style="max-height: 300px;">
+                <canvas id="chartTime"></canvas>
+            </div>
+        </div>
+
     </div>
 </div>
+
+<script>
+    // Configuración Gráfico de Estados (Doughnut)
+    const ctxStatus = document.getElementById('chartStatus').getContext('2d');
+    new Chart(ctxStatus, {
+        type: 'doughnut',
+        data: {
+            labels: ['Abiertas', 'Completadas'],
+            datasets: [{
+                data: [{{ ots_abiertas }}, {{ ots_completadas }}],
+                backgroundColor: ['#f1c40f', '#2ecc71'],
+                borderColor: '#fff',
+                borderWidth: 2,
+                hoverOffset: 15
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12, padding: 20 } }
+            }
+        }
+    });
+
+    // Configuración Gráfico de Comparativa de Tiempos (Bar)
+    const ctxTime = document.getElementById('chartTime').getContext('2d');
+    new Chart(ctxTime, {
+        type: 'bar',
+        data: {
+            labels: ['Horas Hombre Acumuladas'],
+            datasets: [
+                {
+                    label: 'Estimado (Planificado)',
+                    data: [{{ total_estimado }}],
+                    backgroundColor: '#3498db',
+                    borderRadius: 5
+                },
+                {
+                    label: 'Real (Ejecutado)',
+                    data: [{{ total_real }}],
+                    backgroundColor: '#e74c3c',
+                    borderRadius: 5
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { 
+                    beginAtZero: true,
+                    title: { display: true, text: 'Horas (h)' }
+                }
+            },
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+</script>
+
 {% endblock %}
